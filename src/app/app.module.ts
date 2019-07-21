@@ -2,7 +2,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
 import { AppComponent } from "./app.component";
-import { ViewPokemonComponent } from './view-pokemon/view-pokemon.component';
+import { ViewPokemonComponent } from "./view-pokemon/view-pokemon.component";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { ViewPokemonComponent } from './view-pokemon/view-pokemon.component';
     ViewPokemonComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

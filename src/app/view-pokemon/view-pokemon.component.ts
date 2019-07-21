@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { ApiService } from "../shared/api.service";
 
 @Component({
   selector: "view-pokemon",
@@ -7,11 +8,12 @@ import { Component, OnInit } from "@angular/core";
 })
 export class ViewPokemonComponent implements OnInit {
 
-  constructor() {
-
+  constructor(private api: ApiService) {
+    console.log(this.api.getPokemons());
   }
 
   ngOnInit() {
+
   }
 
 }
