@@ -8,11 +8,15 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class PokemonDetailsComponent implements OnInit {
 
+  public id: number;
+
   constructor(private route: ActivatedRoute)
   { }
 
   ngOnInit() {
-
+    this.route.params.subscribe(params => {
+      this.id = params.id;
+    });
   }
 
 }

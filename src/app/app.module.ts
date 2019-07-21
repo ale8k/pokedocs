@@ -21,7 +21,7 @@ import { PokemonDetailsComponent } from "./view-pokemon/pokemon/pokemon-details/
     RouterModule.forRoot([
       { path: "", redirectTo: "pokemon-list", pathMatch: "full" },
       { path: "pokemon-list", component: ViewPokemonComponent },
-      { path: "pokemon-details", component: PokemonDetailsComponent }
+      { path: "pokemon-details/:id", component: PokemonDetailsComponent }
     ])
   ],
   providers: [],
