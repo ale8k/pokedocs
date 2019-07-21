@@ -1,25 +1,28 @@
-import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-
 import { IPokemon } from "../models/IPokemon";
+import { Observable, merge } from "rxjs";
 
-@Injectable({
-  providedIn: "root"
-})
 export class ApiService {
 
-  constructor(private http: HttpClient)
-  { }
+  private arrayOfPokemonObs: Array<Observable<IPokemon>> = new Array<Observable<IPokemon>>();
+  private mergedPokemonObs$: Observable<IPokemon>;
 
-  public getPokemons(): Array<IPokemon> {
-    const pokemonCount = 809;
-    const allPokemon = [];
+  constructor(
+    private http: HttpClient
+  ) { }
 
-    for (let i = 1; i < pokemonCount; i++) {
-      this.http.get<IPokemon>("https://pokeapi.co/api/v2/pokemon/" + i).subscribe(data => allPokemon.push(data));
+  /**
+   * Gets all Pokemon via individual requests,
+   * then merges all requests Observables into single
+   * Observable and returns it.
+   */
+  public getAllPokemonFromAPI(): Observable<IPokemon> {
+
+    // TODO: Remove hard coded count of pokemon, shit way of doing this
+    for (let i = 1; i < 800; i++) {
+      this.arrayOfPokemonObs.push(this.http.get<IPokemon>("https://pokeapi.co/api/v2/pokemon/" + i));
     }
-
-    return allPokemon;
+    this.mergedPokemonObs$ = merge(...this.arrayOfPokemonObs);
+    return this.mergedPokemonObs$;
   }
-
 }

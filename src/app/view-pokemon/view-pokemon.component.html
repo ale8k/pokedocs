@@ -1,3 +1,4 @@
 <div class="view-pokemon">
-    <pokemon *ngFor="let pokemon of allPokemon" [pokemon]="pokemon"></pokemon>
+    hi guys
+    <pokemon *ngFor="let pokemon of allPokemon$ | async" [pokemon]="pokemon"></pokemon>
 </div>

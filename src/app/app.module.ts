@@ -7,6 +7,7 @@ import { AppComponent } from "./app.component";
 import { ViewPokemonComponent } from "./view-pokemon/view-pokemon.component";
 import { PokemonComponent } from "./view-pokemon/pokemon/pokemon.component";
 import { PokemonDetailsComponent } from "./view-pokemon/pokemon/pokemon-details/pokemon-details.component";
+import { ApiService } from "./shared/services/api.service";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { PokemonDetailsComponent } from "./view-pokemon/pokemon/pokemon-details/
       { path: "pokemon-details/:id", component: PokemonDetailsComponent }
     ])
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
