@@ -1,11 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
 
-import { AppComponent } from './app.component';
+import { AppComponent } from "./app.component";
+import { ViewPokemonComponent } from './view-pokemon/view-pokemon.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ViewPokemonComponent,
   ],
   imports: [
     BrowserModule
