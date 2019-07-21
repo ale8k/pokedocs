@@ -1,0 +1,10 @@
+.view-pokemon {
+    display: flex;
+    flex-wrap: wrap;
+
+    .pokemon {
+        height: 80px;
+        width: 80px;
+    }
+
+}

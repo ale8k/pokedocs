@@ -1,5 +1,11 @@
 import { IForm } from "./IForm";
+import { ISprite } from "./ISprite";
 
+/**
+ * Main API model
+ * Contains all sub models within this single model,
+ * this should be the default used in all API calls.
+ */
 export interface IPokemon {
     abilities: Array<object>;
     base_experience: number;
@@ -14,7 +20,7 @@ export interface IPokemon {
     name: string;
     order: number;
     species: object;
-    sprites: object;
+    sprites: ISprite;
     stats: Array<object>;
     types: Array<object>;
     weight: number;

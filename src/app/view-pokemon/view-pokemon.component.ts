@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ApiService } from "../shared/api.service";
+import { ApiService } from "../shared/services/api.service";
 
 @Component({
   selector: "view-pokemon",
@@ -8,12 +8,13 @@ import { ApiService } from "../shared/api.service";
 })
 export class ViewPokemonComponent implements OnInit {
 
-  constructor(private api: ApiService) {
-    console.log(this.api.getPokemons());
-  }
+  public pokemonSprites: Array<object>;
+
+  constructor(private api: ApiService)
+  { }
 
   ngOnInit() {
-
+    this.pokemonSprites = this.api.getPokemons();
   }
 
 }

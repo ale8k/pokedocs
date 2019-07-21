@@ -1,1 +1,5 @@
-<p>view-pokemon works!</p>
+<div class="view-pokemon">
+    <div *ngFor="let sprite of pokemonSprites" class="pokemon">
+        <img [src]="sprite">
+    </div>
+</div>
