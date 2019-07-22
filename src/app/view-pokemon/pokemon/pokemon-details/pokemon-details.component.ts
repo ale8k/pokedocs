@@ -29,8 +29,6 @@ export class PokemonDetailsComponent implements OnInit, OnDestroy {
     this.subscriptions = this.route.params.subscribe(params => {
       this.id = Number(params.id);
     });
-    console.log(this.pokemonService.getPokemonDetails(this.id));
-
   }
 
   public navigateBack() {
