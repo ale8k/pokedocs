@@ -18,6 +18,8 @@ export class ApiService {
    * We are also able to pipe as the Pokemon come in now, 1 by 1.
    *
    * Downside, slightly lower loading speed, but I feel it is worth it.
+   *
+   * TODO: Update api to go to v2/pokemon-form/{id}... so we can grab sprites from here and the basic info
    */
   public getAllPokemonFromAPI() {
     const arrayOfPokemon: Array<IPokemon> = new Array<IPokemon>();
