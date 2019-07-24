@@ -1,35 +1,34 @@
 import { HttpClient } from "@angular/common/http";
 import { IPokemon } from "../models/IPokemon";
-import { Subject } from "rxjs";
 
 export class ApiService {
 
-  private subjectOfPokemon$: Subject<Array<IPokemon>> = new Subject<Array<IPokemon>>();
+  private pokemonArray = [];
 
   constructor(
     private http: HttpClient
   ) { }
 
   /**
-   * Performs single requests for each pokemon,
-   * we subscribe immediately, push the single pokemon onto the local array
-   * and then send a 'new' array through the subject stream
-   * This is better than having a local array stored, as this will be garbage collected
-   * We are also able to pipe as the Pokemon come in now, 1 by 1.
+   * Get all pokemon from the api
+   * Due to the API requests coming in async,
+   * we sort them as they come. To ensure consistency.
    *
-   * Downside, slightly lower loading speed, but I feel it is worth it.
-   *
-   * TODO: Update api to go to v2/pokemon-form/{id}... so we can grab sprites from here and the basic info
+   * TODO: Replace null return on push with some kind of placeholder for data,
+   * cache the pokemon locally and return data from cache. Maybe do this
+   * in pokemon service...?
    */
-  public getAllPokemonFromAPI() {
-    const arrayOfPokemon: Array<IPokemon> = new Array<IPokemon>();
-    for (let i = 1; i < 800; i++) {
-      this.http.get<IPokemon>("https://pokeapi.co/api/v2/pokemon/" + i).subscribe(data => {
-        arrayOfPokemon.push(data);
-        this.subjectOfPokemon$.next(arrayOfPokemon);
-      });
-
+  public getAllPokemon() {
+    if (this.pokemonArray.length === 0) {
+      for (let i = 1; i < 800; i++) {
+        this.http.get<IPokemon>("https://pokeapi.co/api/v2/pokemon/" + i).subscribe(data => {
+          this.pokemonArray.push(data ? data : null);
+          this.pokemonArray.sort((a, b) => a.id - b.id);
+        });
+      }
+      return this.pokemonArray;
     }
-    return this.subjectOfPokemon$;
+    return this.pokemonArray;
   }
+
 }

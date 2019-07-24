@@ -13,7 +13,7 @@ import { IPokemon } from "src/app/shared/models/IPokemon";
 })
 export class PokemonComponent implements OnInit {
 
-  @Input() pokemon: IPokemon;
+  @Input() pokemon;
 
   constructor(private route: Router)
   { }
