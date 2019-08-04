@@ -1,3 +1,9 @@
 <div class="view-pokemon">
-    <pokemon *ngFor="let pokemon of allPokemon$ | async" [pokemon]="pokemon"></pokemon>
+    <!-- Filter box-->
+    <div class="">
+        <div>click me for fire types...?</div>
+    </div>
+
+    <!-- Pokemon view -->
+    <pokemon *ngFor="let pokemon of pokemon$ | async" [pokemon]="pokemon"></pokemon>
 </div>

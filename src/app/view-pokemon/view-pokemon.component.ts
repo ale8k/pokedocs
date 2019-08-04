@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { PokemonService } from "../shared/services/pokemon.service";
 import { IPokemon } from "../shared/models/IPokemon";
-import { Observable } from "rxjs";
-import { ApiService } from "../shared/services/api.service";
+import { Subject, BehaviorSubject } from "rxjs";
+import { filter, map } from "rxjs/operators";
 
 /**
  * ViewPokemonComponent is our outer wrapper for the (individual) PokemonComponent
@@ -14,14 +14,14 @@ import { ApiService } from "../shared/services/api.service";
 })
 export class ViewPokemonComponent implements OnInit {
 
-  public allPokemon$: Observable<Array<IPokemon>>;
+  public pokemon$;
 
   constructor(
     private pokemonService: PokemonService
   ) { }
 
   ngOnInit() {
-    this.allPokemon$ = this.pokemonService.getAllPokemon();
+    this.pokemon$ = this.pokemonService.getAllPokemon();
   }
 
 }

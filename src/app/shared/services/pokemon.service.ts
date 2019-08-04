@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ApiService } from "./api.service";
 import { IPokemon } from "../models/IPokemon";
-import { Observable, of } from "rxjs";
+import { Observable, Subject, of, BehaviorSubject } from "rxjs";
 
 
 @Injectable({
@@ -13,8 +13,8 @@ export class PokemonService {
     private api: ApiService
   ) { }
 
-  public getAllPokemon(): Observable<Array<IPokemon>> {
-    return of(this.api.getAllPokemon());
+  public getAllPokemon() {
+    return new BehaviorSubject<IPokemon[]>(this.api.getAllPokemon());
   }
 
 

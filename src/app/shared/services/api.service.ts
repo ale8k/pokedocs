@@ -1,5 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { IPokemon } from "../models/IPokemon";
+import { of, Observable, Subject } from "rxjs";
+import { map } from "rxjs/operators";
 
 export class ApiService {
 
